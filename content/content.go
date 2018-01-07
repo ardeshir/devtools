@@ -45,6 +45,6 @@ func main() {
  //fmt.Println(string(content))
  json.Unmarshal(content, &respContent )
   
- fmt.Println(respContent)
+ fmt.Println(respContent.ToString())
 
 }
