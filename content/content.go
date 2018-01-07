@@ -22,7 +22,7 @@ type GetResponse struct {
 }
 
 func (r *GetResponse) ToString() string { 
-    s := fmt.Sprintf("GET Response\n Origin IP: %s\nRequest URL: %s\n",
+    s := fmt.Sprintf("GET Response\nOrigin IP: %s\nRequest URL: %s\n",
          r.Origin, r.URL)
          
          for k, v := range r.Headers {
@@ -47,4 +47,5 @@ func main() {
   
  fmt.Println(respContent.ToString())
 
+ u.V(version)
 }
