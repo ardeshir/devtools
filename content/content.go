@@ -1,4 +1,5 @@
 package main
+// go build -ldflags "-X main.version=0.0.1"
 
 import (
 	"net/http"
@@ -11,6 +12,8 @@ import (
    u "github.com/ardeshir/version"
 )
 
+var version string = "0.0.1"
+
 func main() {
 
   resp, err := http.Get("https://httpbin.org/get")
@@ -21,4 +24,6 @@ func main() {
  u.ErrNil(err, "Unable to read resp")
  fmt.Println(string(content))
 
+
+  u.V(version)
 }
