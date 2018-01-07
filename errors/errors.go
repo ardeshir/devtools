@@ -27,6 +27,9 @@ func init() {
     router.Register(404, func(resp *http.Response) {
          log.Fatalln("Not Found (404):", resp.Request.URL.String())
     })
+    router.Register(403, func(resp *http.Response) {
+         log.Fatalln("Not Found (403):", resp.Request.URL.String())
+    })
 }
 
 func main() {
