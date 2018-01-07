@@ -2,10 +2,10 @@ package main
 
 import (
 	"net/http"
-	"encoding/base64"
-	"bytes"
+	// "encoding/base64"
+	// "bytes"
 	"io/ioutil"
-	"os"
+	// "os"
 	"log"
 	"fmt"
 )
@@ -16,7 +16,9 @@ func main(){
 	req, err := http.NewRequest("GET", "https://httpbin.org/basic-auth/user/passw0rd", nil)
 	errNil(err, "Unable to create request")
 	
+	req.SetBasicAuth("user","passw0rd")
 	
+	/*
 	buffer := &bytes.Buffer{}
 	
 	enc := base64.NewEncoder(base64.URLEncoding, buffer)
@@ -28,8 +30,8 @@ func main(){
 	if err != nil && err.Error() != "EOF" { 
 		os.Exit(-1)
 	}
-	
     req.Header.Add("Authorization", fmt.Sprintf("Basic %s", encodedCreds))
+	*/
 	
 	resp, err := http.DefaultClient.Do(req)
 	errNil(err, "Failed to do request")
