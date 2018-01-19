@@ -66,6 +66,7 @@ func defaultVersion() string {
  return version 
 }
 
+// Function to check env variable DEFAULT_URL to http get
 func defaultURL() string {
     if os.Getenv("DEFAULT_URL") != "" {
         return os.Getenv("DEFAULT_URL")
