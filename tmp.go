@@ -1,5 +1,6 @@
 package main
 // go build -ldflags "-X main.version=0.0.1"
+// godoc -http :9090
 
 import (
 	"net/http"
