@@ -17,7 +17,16 @@ import (
    u "github.com/ardeshir/version"
 )
 
-var version string = "0.0.1"
+
+func defaultVersion() string {
+
+ if os.Getenv("DEFAULT_VERSION") != "" {
+     return os.Getenv("DEFAULT_VERSION")
+  }    
+  
+ var version string = "0.0.1"
+ return version 
+}
 
 func main() {
     resp, err := http.Get(os.Args[1])
@@ -28,5 +37,5 @@ func main() {
 
     fmt.Println(string(content))
  // -----------------  footer ----------- //    
- u.V(version)
+ u.V( defaultVersion() )
 }
