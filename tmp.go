@@ -7,6 +7,7 @@ package main
 
 import (
 	"net/http"
+	"flag"
 	// "encoding/json"
 	// "encoding/base64"
 	// "bytes"
@@ -21,7 +22,13 @@ import (
 
 
 func main() {
-    resp, err := http.Get(os.Args[1])
+    
+    url2get  := flag.String("url", defaultURL() , "Link to download")
+    flag.Parse()
+    
+    // resp, err := http.Get(os.Args[1])
+    
+    resp, err := http.Get(*url2get)
     u.ErrNil(err, "Unable to read response")
     defer resp.Body.Close()
     content, err := ioutil.ReadAll(resp.Body)
@@ -57,4 +64,11 @@ func defaultVersion() string {
   
     var version string = "0.0.1"
  return version 
+}
+
+func defaultURL() string {
+    if os.Getenv("DEFAULT_URL") != "" {
+        return os.Getenv("DEFAULT_URL")
+    }
+    return "https://httpbin.org/get"
 }
