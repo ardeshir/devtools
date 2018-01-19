@@ -13,4 +13,4 @@ MAIN=$1
 fi
 
 #echo "${MAIN}"
-go run $MAIN
+go run $MAIN $2 $3 $4
