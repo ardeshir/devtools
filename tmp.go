@@ -17,24 +17,7 @@ import (
    u "github.com/ardeshir/version"
 )
 
-func debugTrue() bool {
-    
-     if os.Getenv("DEFAULT_DEBUG") != "" {
-        return true
-     }  
-     return false 
-}
 
-
-func defaultVersion() string {
-
- if os.Getenv("DEFAULT_VERSION") != "" {
-     return os.Getenv("DEFAULT_VERSION")
-  }    
-  
-    var version string = "0.0.1"
- return version 
-}
 
 
 func main() {
@@ -48,8 +31,30 @@ func main() {
     
     
     
- // -----------------  footer ----------- // 
+ // --------- basic housekeeping ----------- // 
+ // if we're int debug mode, pring out info 
+ 
    if debugTrue() {
     u.V( defaultVersion() )
    }
+}
+
+// Function to check env variable DEFAULT_DEBUG bool
+func debugTrue() bool {
+    
+     if os.Getenv("DEFAULT_DEBUG") != "" {
+        return true
+     }  
+     return false 
+}
+
+// Function to check env variable DEFAULT_VERSION string
+func defaultVersion() string {
+
+ if os.Getenv("DEFAULT_VERSION") != "" {
+     return os.Getenv("DEFAULT_VERSION")
+  }    
+  
+    var version string = "0.0.1"
+ return version 
 }
