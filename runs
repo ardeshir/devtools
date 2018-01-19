@@ -1,0 +1,16 @@
+#!/bin/bash
+
+MAIN=""
+
+if [[ -z $1 ]]; then
+
+MAIN=main.go
+
+else
+
+MAIN=$1
+ 
+fi
+
+#echo "${MAIN}"
+go run $MAIN $2 $3 $4
