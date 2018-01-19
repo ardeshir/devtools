@@ -17,6 +17,14 @@ import (
    u "github.com/ardeshir/version"
 )
 
+func debugTrue() bool {
+    
+     if os.Getenv("DEFAULT_DEBUG") != "" {
+        return true
+     }  
+     return false 
+}
+
 
 func defaultVersion() string {
 
@@ -24,9 +32,10 @@ func defaultVersion() string {
      return os.Getenv("DEFAULT_VERSION")
   }    
   
- var version string = "0.0.1"
+    var version string = "0.0.1"
  return version 
 }
+
 
 func main() {
     resp, err := http.Get(os.Args[1])
@@ -36,6 +45,11 @@ func main() {
     u.ErrNil(err, "Unable to read content")
 
     fmt.Println(string(content))
- // -----------------  footer ----------- //    
- u.V( defaultVersion() )
+    
+    
+    
+ // -----------------  footer ----------- // 
+   if debugTrue() {
+    u.V( defaultVersion() )
+   }
 }
