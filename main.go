@@ -35,7 +35,9 @@ type Person struct {
 }
 
 func (p Person) Salary() (int, error) {
-    
+     if p.Role == "" {
+         return 0, errors.New("Unable to handle empty value for Role!")
+     }
       switch p.Role {
           
           case "Developer" : 
@@ -56,27 +58,31 @@ func main() {
    ardeshir := Person{   First: "Ardeshir",  Last: "Sepahsalar", Age: 47, Role: "Developer" }
    john     := Person{   First: "John",  Last: "Jupyter", Age: 70, Role: "Architect" }
    jack     := Person{   First: "Jack",  Last: "Johnson", Age: 30, Role: "Designer" }
+   jean     := Person{   First: "Jean",  Last: "Julin", Age: 20, Role: "" }
    
-   aSal, erra :=  ardeshir.Salary();
-   if erra != nil {
+   if aSal, erra :=  ardeshir.Salary(); erra != nil {
        fmt.Println(erra)
    } else {
          fmt.Println(ardeshir.First, aSal)
    }
    
-   jSal, errj :=  john.Salary();
-   if errj != nil {
+   if jSal, errj :=  john.Salary(); errj != nil {
        fmt.Println(errj)
    } else {
        fmt.Println(john.First,jSal )
    }
-   kSal, errk := jack.Salary();
-   if errk != nil {
+   
+   if kSal, errk := jack.Salary(); errk != nil {
        fmt.Println(errk)
    } else {
       fmt.Println(jack.First, kSal) 
    }
    
+   if nSal, errn := jean.Salary();  errn != nil {
+       fmt.Println(errn)
+   } else {
+       fmt.Println(jean.First, nSal) 
+   }
  
    
    
